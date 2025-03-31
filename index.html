@@ -275,5 +275,19 @@
 
     <script src="questions.js"></script>
     <script src="app.js"></script>
+    <script>
+        // 确保全局函数存在
+        if (typeof handleAnswer !== 'function') {
+            window.handleAnswer = function(answer) {
+                console.log("全局处理答案函数被调用:", answer);
+                if (window.handleAnswer) {
+                    window.handleAnswer(answer);
+                } else {
+                    console.error("错误: 未找到handleAnswer函数，请刷新页面重试");
+                    alert("出现错误，请刷新页面重试");
+                }
+            }
+        }
+    </script>
 </body>
 </html> 

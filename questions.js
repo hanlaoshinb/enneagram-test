@@ -319,11 +319,110 @@ const personalityTypes = {
         suitableJobs: ["护士", "社工", "心理咨询师", "人力资源"],
         catchPhrases: ["让我帮你", "需要帮助吗", "我很关心你"]
     },
-    // ... 其他类型描述 ...
+    3: {
+        name: "成就者",
+        description: "追求成功，高效务实",
+        characteristics: [
+            "目标导向",
+            "高效率",
+            "自信",
+            "好胜心强"
+        ],
+        famousPeople: ["乔布斯", "马云"],
+        loveTraits: "在感情中注重效率和成果，可能缺乏耐心",
+        suitableJobs: ["企业家", "营销人员", "项目经理", "销售"],
+        catchPhrases: ["完成它", "效率最重要", "我能做到"]
+    },
+    4: {
+        name: "个人主义者",
+        description: "敏感独特，追求自我表达",
+        characteristics: [
+            "情感丰富",
+            "追求独特性",
+            "有创造力",
+            "自我意识强"
+        ],
+        famousPeople: ["梵高", "王尔德"],
+        loveTraits: "在感情中追求深度和真实，渴望被理解",
+        suitableJobs: ["艺术家", "作家", "设计师", "心理治疗师"],
+        catchPhrases: ["没人理解我", "这不够特别", "我感觉..."]
+    },
+    5: {
+        name: "观察者",
+        description: "理性客观，追求知识",
+        characteristics: [
+            "分析能力强",
+            "独立",
+            "喜欢观察",
+            "追求知识"
+        ],
+        famousPeople: ["爱因斯坦", "比尔·盖茨"],
+        loveTraits: "在感情中保持距离，需要个人空间",
+        suitableJobs: ["研究员", "分析师", "程序员", "工程师"],
+        catchPhrases: ["让我思考一下", "我需要更多信息", "很有趣"]
+    },
+    6: {
+        name: "忠诚者",
+        description: "谨慎忠诚，注重安全感",
+        characteristics: [
+            "责任感强",
+            "忠诚",
+            "谨慎",
+            "防备心理"
+        ],
+        famousPeople: ["丘吉尔", "林肯"],
+        loveTraits: "在感情中寻求安全感，忠诚且担心被抛弃",
+        suitableJobs: ["安全顾问", "风险评估", "审计", "行政管理"],
+        catchPhrases: ["安全第一", "要小心", "这可靠吗"]
+    },
+    7: {
+        name: "活跃者",
+        description: "乐观积极，追求多样体验",
+        characteristics: [
+            "乐观",
+            "活力充沛",
+            "灵活多变",
+            "避免痛苦"
+        ],
+        famousPeople: ["莫扎特", "罗宾·威廉姆斯"],
+        loveTraits: "在感情中追求刺激和新鲜感，害怕束缚",
+        suitableJobs: ["旅行家", "创意总监", "市场策划", "活动策划"],
+        catchPhrases: ["太有趣了", "下一个是什么", "有无限可能"]
+    },
+    8: {
+        name: "挑战者",
+        description: "强势自信，追求控制权",
+        characteristics: [
+            "自信",
+            "强势",
+            "决断力强",
+            "保护弱者"
+        ],
+        famousPeople: ["拿破仑", "史蒂夫·乔布斯"],
+        loveTraits: "在感情中占主导地位，直接且强势",
+        suitableJobs: ["企业领导", "军事指挥", "政治家", "企业家"],
+        catchPhrases: ["我说了算", "直接面对", "强者生存"]
+    },
+    9: {
+        name: "调停者",
+        description: "平和包容，追求和谐",
+        characteristics: [
+            "包容",
+            "善解人意",
+            "平和",
+            "避免冲突"
+        ],
+        famousPeople: ["达赖喇嘛", "甘地"],
+        loveTraits: "在感情中寻求和谐，避免冲突和争执",
+        suitableJobs: ["调解员", "顾问", "人力资源", "辅导员"],
+        catchPhrases: ["没关系", "随你便", "和平最重要"]
+    }
 };
 
 // 计算得分函数
 function calculatePersonalityType(answers) {
+    console.log("计算九型人格类型，答案:", answers);
+    
     const scores = {
         1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
         6: 0, 7: 0, 8: 0, 9: 0
@@ -332,9 +431,14 @@ function calculatePersonalityType(answers) {
     answers.forEach(answer => {
         const values = answer.split(',');
         values.forEach(value => {
-            scores[value] += 1;
+            // 确保只使用有效的值
+            if (value && !isNaN(parseInt(value))) {
+                scores[value] = (scores[value] || 0) + 1;
+            }
         });
     });
+    
+    console.log("各类型得分:", scores);
     
     // 找出得分最高的类型
     let maxScore = 0;
@@ -347,6 +451,7 @@ function calculatePersonalityType(answers) {
         }
     }
     
+    console.log("最终类型:", personalityType);
     return personalityType;
 }
 
