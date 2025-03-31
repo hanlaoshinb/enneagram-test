@@ -1,318 +1,129 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九型人格测试 - 测试页面</title>
+    <meta name="description" content="エニアグラム性格テスト - 自分の本当の性格タイプを発見しよう。">
+    <title>エニアグラム性格テスト | テストページ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1E293B',
-                        secondary: '#64748B',
-                        accent: '#3B82F6'
+                        primary: '#1E40AF',
+                        secondary: '#3B82F6',
+                        accent: '#DBEAFE',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-gray-50">
-    <div class="min-h-screen flex flex-col items-center justify-center p-6">
-        <div class="w-full max-w-2xl text-center mb-12">
-            <h1 class="text-4xl font-bold text-primary mb-6">九型人格测试</h1>
-            <p class="text-xl text-gray-600">点击下面的按钮开始测试</p>
-        </div>
-
-        <button id="start-test" class="bg-primary text-white text-lg px-8 py-4 rounded-full hover:bg-primary/90 transition-colors shadow-lg">
-            开始测试
-        </button>
-    </div>
-
-    <script>
-        // 简化版的九型人格测试数据
-        const questions = [
-            {
-                id: 1,
-                text: "测试问题1",
-                options: [
-                    { text: "选项A", value: "1,2" },
-                    { text: "选项B", value: "3,4" }
-                ]
-            },
-            {
-                id: 2,
-                text: "测试问题2",
-                options: [
-                    { text: "选项A", value: "5,6" },
-                    { text: "选项B", value: "7,8" }
-                ]
-            },
-            {
-                id: 3,
-                text: "测试问题3",
-                options: [
-                    { text: "选项A", value: "9,1" },
-                    { text: "选项B", value: "2,3" }
-                ]
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
-        ];
-
-        // 九型人格类型描述
-        const personalityTypes = {
-            1: { 
-                name: "类型1", 
-                description: "类型1描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            2: { 
-                name: "类型2", 
-                description: "类型2描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            3: { 
-                name: "类型3", 
-                description: "类型3描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            4: { 
-                name: "类型4", 
-                description: "类型4描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            5: { 
-                name: "类型5", 
-                description: "类型5描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            6: { 
-                name: "类型6", 
-                description: "类型6描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            7: { 
-                name: "类型7", 
-                description: "类型7描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            8: { 
-                name: "类型8", 
-                description: "类型8描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
-            },
-            9: { 
-                name: "类型9", 
-                description: "类型9描述",
-                characteristics: ["特征1", "特征2"],
-                famousPeople: ["名人1", "名人2"],
-                loveTraits: "恋爱特征",
-                suitableJobs: ["工作1", "工作2"],
-                catchPhrases: ["口头禅1", "口头禅2"]
+            .transition-all {
+                transition: all 0.3s ease;
             }
-        };
-
-        // 计算得分函数
-        function calculatePersonalityType(answers) {
-            console.log("计算中...", answers);
-            const scores = {
-                1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
-                6: 0, 7: 0, 8: 0, 9: 0
-            };
-            
-            answers.forEach(answer => {
-                const values = answer.split(',');
-                values.forEach(value => {
-                    scores[value] = (scores[value] || 0) + 1;
-                });
-            });
-            
-            console.log("分数:", scores);
-            
-            // 找出得分最高的类型
-            let maxScore = 0;
-            let personalityType = 1;
-            
-            for (let type in scores) {
-                if (scores[type] > maxScore) {
-                    maxScore = scores[type];
-                    personalityType = parseInt(type);
-                }
-            }
-            
-            console.log("结果类型:", personalityType);
-            return personalityType;
         }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">エニアグラム</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-all">テストについて</a>
+                <a href="index.html#features" class="font-medium hover:text-primary transition-all">特徴</a>
+                <a href="index.html#faq" class="font-medium hover:text-primary transition-all">よくある質問</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="index.html#about" class="block font-medium hover:text-primary">テストについて</a>
+                <a href="index.html#features" class="block font-medium hover:text-primary">特徴</a>
+                <a href="index.html#faq" class="block font-medium hover:text-primary">よくある質問</a>
+            </div>
+        </div>
+    </header>
 
-        // 测试逻辑
-        document.addEventListener('DOMContentLoaded', () => {
-            // DOM 元素
-            const startButton = document.getElementById('start-test');
-            const testContainer = document.createElement('div');
-            testContainer.className = 'fixed inset-0 bg-white z-50 overflow-auto hidden';
-            document.body.appendChild(testContainer);
+    <!-- Test Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl font-bold text-center mb-8">エニアグラム性格テスト</h1>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div id="test-intro">
+                        <p class="text-lg mb-6">
+                            このテストは36問の二択問題で構成されており、あなたがどのエニアグラムタイプに当てはまりやすいかを理解するのに役立ちます。
+                        </p>
+                        <p class="text-lg mb-6">
+                            最初の直感で、自分に最も当てはまる選択肢を選んでください。あまり考えすぎないようにしましょう。
+                        </p>
+                        <p class="text-lg mb-8">
+                            テストは約5分で完了します。結果はテスト終了後すぐに表示されます。
+                        </p>
+                        <button id="start-test" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg shadow-md transition-all">
+                            テストを始める
+                        </button>
+                    </div>
 
-            // 当前问题索引
-            let currentQuestionIndex = 0;
-            // 用户答案
-            const userAnswers = [];
-
-            // 开始测试
-            function startTest() {
-                console.log("开始测试");
-                testContainer.classList.remove('hidden');
-                showQuestion(currentQuestionIndex);
-            }
-
-            // 显示问题
-            function showQuestion(index) {
-                console.log("显示问题", index);
-                const question = questions[index];
-                testContainer.innerHTML = `
-                    <div class="min-h-screen flex flex-col items-center justify-center p-6">
-                        <div class="w-full max-w-2xl">
-                            <div class="mb-8">
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-primary h-2 rounded-full transition-all duration-300" 
-                                        style="width: ${((index + 1) / questions.length) * 100}%"></div>
-                                </div>
-                                <p class="text-right mt-2 text-gray-500">问题 ${index + 1}/${questions.length}</p>
-                            </div>
-                            
-                            <div class="bg-white rounded-2xl p-8 shadow-lg question-transition">
-                                <h2 class="text-2xl font-bold mb-8 text-center">${question.text}</h2>
-                                <div class="space-y-4">
-                                    ${question.options.map((option, optionIndex) => `
-                                        <button 
-                                            class="w-full p-4 text-left rounded-lg border-2 border-gray-200 hover:border-primary hover:bg-primary/5 transition-colors"
-                                            onclick="handleAnswer('${option.value}')">
-                                            ${option.text}
-                                        </button>
-                                    `).join('')}
-                                </div>
+                    <div id="test-questions" class="hidden">
+                        <div class="flex justify-between items-center mb-8">
+                            <h2 class="text-xl font-semibold">問題 <span id="current-question">1</span>/36</h2>
+                            <div class="w-40 bg-gray-200 rounded-full h-2.5">
+                                <div id="progress-bar" class="bg-primary h-2.5 rounded-full" style="width: 2.7%"></div>
                             </div>
                         </div>
-                    </div>
-                `;
-            }
 
-            // 处理答案 - 定义为全局函数
-            window.handleAnswer = function(answer) {
-                console.log("处理答案", answer);
-                userAnswers.push(answer);
-                
-                if (currentQuestionIndex < questions.length - 1) {
-                    currentQuestionIndex++;
-                    showQuestion(currentQuestionIndex);
-                } else {
-                    showResult();
-                }
-            }
+                        <!-- Questions will be loaded here by JavaScript -->
+                        <div id="question-container" class="mb-8">
+                            <!-- Question content goes here -->
+                        </div>
 
-            // 显示结果
-            function showResult() {
-                console.log("显示结果");
-                const personalityType = calculatePersonalityType(userAnswers);
-                const result = personalityTypes[personalityType];
-                
-                console.log("人格类型:", personalityType);
-                console.log("结果:", result);
-                
-                testContainer.innerHTML = `
-                    <div class="min-h-screen flex flex-col items-center justify-center p-6">
-                        <div class="w-full max-w-3xl bg-white rounded-2xl p-8 shadow-lg">
-                            <h2 class="text-3xl font-bold mb-6 text-center">你的九型人格类型是：${result.name}</h2>
-                            
-                            <div class="space-y-8">
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">性格描述</h3>
-                                    <p class="text-gray-600">${result.description}</p>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">主要特征</h3>
-                                    <ul class="list-disc list-inside text-gray-600 space-y-2">
-                                        ${result.characteristics.map(char => `<li>${char}</li>`).join('')}
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">典型代表人物</h3>
-                                    <p class="text-gray-600">${result.famousPeople.join('、')}</p>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">恋爱特征</h3>
-                                    <p class="text-gray-600">${result.loveTraits}</p>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">适合的职业</h3>
-                                    <p class="text-gray-600">${result.suitableJobs.join('、')}</p>
-                                </div>
-                                
-                                <div>
-                                    <h3 class="text-xl font-semibold mb-3">常用语</h3>
-                                    <p class="text-gray-600">${result.catchPhrases.join('、')}</p>
-                                </div>
-                            </div>
-                            
-                            <div class="mt-12 flex justify-center space-x-4">
-                                <button 
-                                    onclick="window.location.reload()" 
-                                    class="px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors">
-                                    重新测试
-                                </button>
-                                <button 
-                                    onclick="window.print()" 
-                                    class="px-6 py-3 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors">
-                                    打印结果
-                                </button>
-                            </div>
+                        <div class="flex justify-between">
+                            <button id="prev-btn" class="bg-gray-200 hover:bg-gray-300 text-dark font-medium py-3 px-6 rounded-lg shadow-md transition-all hidden">
+                                前へ
+                            </button>
+                            <button id="next-btn" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all">
+                                次へ
+                            </button>
                         </div>
                     </div>
-                `;
-            }
 
-            // 添加事件监听
-            if (startButton) {
-                startButton.addEventListener('click', startTest);
-            }
-        });
-    </script>
+                    <div id="test-results" class="hidden">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="opacity-75">© 2023 michael. All rights reserved.</p>
+            <p class="opacity-75 mt-2">
+                <a href="mailto:contact@aihinto.com" class="hover:text-accent transition-all">contact@aihinto.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for the test will be added in a separate file -->
+    <script src="test.js"></script>
 </body>
 </html> 

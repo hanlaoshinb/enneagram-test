@@ -1,293 +1,259 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九型人格测试 - 探索真实的自我</title>
+    <meta name="description" content="エニアグラム性格テスト - 自分の本当の性格タイプを発見しよう。無料で36問の二択テストを受けて、あなたのエニアグラムタイプを知りましょう。">
+    <meta name="keywords" content="エニアグラム, 性格テスト, 心理テスト, 自己発見, パーソナリティ, 九型人格">
+    <title>エニアグラム性格テスト | 自分を知る旅</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1E293B',
-                        secondary: '#64748B',
-                        accent: '#3B82F6'
+                        primary: '#1E40AF',
+                        secondary: '#3B82F6',
+                        accent: '#DBEAFE',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .transition-all {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-light text-dark">
     <!-- Header -->
-    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-primary">九型人格测试</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-gray-600 hover:text-primary transition-colors">特色</a>
-                    <a href="#how-it-works" class="text-gray-600 hover:text-primary transition-colors">使用方法</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors">用户评价</a>
-                    <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">常见问题</a>
-                    <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">价格</a>
-                </div>
-                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
-                    开始测试
-                </button>
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">エニアグラム</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="font-medium hover:text-primary transition-all">テストについて</a>
+                <a href="#features" class="font-medium hover:text-primary transition-all">特徴</a>
+                <a href="#test" class="font-medium hover:text-primary transition-all">テストを始める</a>
+                <a href="#faq" class="font-medium hover:text-primary transition-all">よくある質問</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="#about" class="block font-medium hover:text-primary">テストについて</a>
+                <a href="#features" class="block font-medium hover:text-primary">特徴</a>
+                <a href="#test" class="block font-medium hover:text-primary">テストを始める</a>
+                <a href="#faq" class="block font-medium hover:text-primary">よくある質問</a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-primary mb-6">
-                探索你的真实性格类型
-            </h1>
-            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-                通过科学的九型人格测试，深入了解自己的性格特征，发现更好的自己。
-            </p>
-            <button class="bg-primary text-white text-lg px-8 py-4 rounded-full hover:bg-primary/90 transition-colors shadow-lg">
-                立即开始测试
-            </button>
+    <section class="pt-32 pb-24 bg-gradient-to-b from-accent to-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        あなたの本当の<span class="text-primary">エニアグラム</span>タイプを発見しましょう
+                    </h1>
+                    <p class="text-lg mb-8">
+                        36問の簡単な質問で、あなたの深層心理と本当の性格タイプを明らかにします。自分自身をより深く理解し、人間関係や仕事での成功への道を見つけましょう。
+                    </p>
+                    <a href="#test" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all">
+                        無料でテストを始める
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?q=80&w=1470&auto=format&fit=crop" alt="エニアグラム図" class="w-full max-w-md rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">エニアグラムとは？</h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg mb-6">
+                    エニアグラムは9つの基本的な性格タイプを説明する、古代からの知恵に基づいた人格理論システムです。この体系は、人間の行動、思考パターン、感情の反応を深く掘り下げ、自己理解と個人の成長を促進します。
+                </p>
+                <p class="text-lg mb-6">
+                    各タイプには独自の世界観、動機付け、恐れ、欲求があり、それらが私たちの決断や行動の仕方に影響を与えています。自分のタイプを理解することで、自己認識が深まり、他者との関係性が向上し、個人的な成長の道が開かれます。
+                </p>
+                <p class="text-lg">
+                    当サイトの36問テストは、あなたの主要なエニアグラムタイプを特定するための科学的にデザインされた質問で構成されています。テスト結果は、あなたの性格の深層を理解し、自己成長の旅を始めるための貴重なガイドになるでしょう。
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-primary mb-16">为什么选择我们的测试</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="text-center">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16">テストの特徴</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">科学准确</h3>
-                    <p class="text-gray-600">基于专业心理学研究，提供准确的性格分析</p>
+                    <h3 class="text-xl font-semibold mb-3">科学的根拠</h3>
+                    <p>心理学の専門家によって設計された36の質問が、あなたの本当の性格タイプを正確に特定します。</p>
                 </div>
-                <div class="text-center">
-                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">快速简便</h3>
-                    <p class="text-gray-600">只需10分钟，即可完成全部测试</p>
+                    <h3 class="text-xl font-semibold mb-3">迅速な結果</h3>
+                    <p>わずか5分でテストを完了し、即座に詳細な分析結果を受け取ることができます。</p>
                 </div>
-                <div class="text-center">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">深入分析</h3>
-                    <p class="text-gray-600">提供全方位的性格特征解读</p>
+                    <h3 class="text-xl font-semibold mb-3">完全無料</h3>
+                    <p>すべての機能と詳細な結果分析が無料で利用可能です。登録や支払いは一切必要ありません。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it Works Section -->
-    <section id="how-it-works" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-primary mb-16">测试流程</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-2xl font-bold text-primary">1</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">开始测试</h3>
-                    <p class="text-gray-600">点击开始按钮，进入测试页面</p>
-                </div>
-                <div class="text-center">
-                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-2xl font-bold text-primary">2</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">回答问题</h3>
-                    <p class="text-gray-600">完成36道精心设计的问题</p>
-                </div>
-                <div class="text-center">
-                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-2xl font-bold text-primary">3</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">生成报告</h3>
-                    <p class="text-gray-600">系统分析您的答案</p>
-                </div>
-                <div class="text-center">
-                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <span class="text-2xl font-bold text-primary">4</span>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">查看结果</h3>
-                    <p class="text-gray-600">获取详细的性格分析报告</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-primary mb-16">用户评价</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="bg-gray-50 p-8 rounded-2xl">
-                    <p class="text-gray-600 mb-6">"这个测试帮助我更好地了解了自己，对我的职业规划有很大帮助。"</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                        <div>
-                            <h4 class="font-semibold">张小明</h4>
-                            <p class="text-gray-500">产品经理</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-2xl">
-                    <p class="text-gray-600 mb-6">"测试结果非常准确，让我对自己的性格特点有了新的认识。"</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                        <div>
-                            <h4 class="font-semibold">李华</h4>
-                            <p class="text-gray-500">教师</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-50 p-8 rounded-2xl">
-                    <p class="text-gray-600 mb-6">"通过这个测试，我更好地理解了自己和他人的差异。"</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                        <div>
-                            <h4 class="font-semibold">王芳</h4>
-                            <p class="text-gray-500">心理咨询师</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Test Start Button Section -->
+    <section id="test" class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8">あなたのエニアグラムタイプを発見しましょう</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-10">
+                36の簡単な質問に答えるだけで、あなたの本当の性格タイプが明らかになります。テストは約5分で完了します。
+            </p>
+            <a href="test.html" class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all text-lg">
+                テストを始める
+            </a>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section id="faq" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-primary mb-16">常见问题</h2>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16">よくある質問</h2>
             <div class="max-w-3xl mx-auto space-y-6">
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="font-semibold text-lg mb-2">测试需要多长时间？</h3>
-                    <p class="text-gray-600">一般来说，完成全部36道题目大约需要10-15分钟。</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">エニアグラムテストは信頼できるものですか？</h3>
+                    <p>はい。当サイトのテストは心理学者と専門家によって設計され、長年の研究と実践に基づいています。36の質問は、あなたの本当の性格タイプを正確に特定するために慎重に選ばれています。</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="font-semibold text-lg mb-2">测试结果准确吗？</h3>
-                    <p class="text-gray-600">我们的测试基于科学的心理学研究，具有较高的准确性。但请记住，这仅作为自我认知的参考。</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">テスト結果の解釈方法は？</h3>
+                    <p>テスト完了後、あなたの主要なエニアグラムタイプと詳細な性格分析が表示されます。それには、あなたの強み、弱み、対人関係のパターン、仕事への適性などが含まれます。結果は自己理解と個人的成長のガイドとして活用してください。</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 class="font-semibold text-lg mb-2">可以保存测试结果吗？</h3>
-                    <p class="text-gray-600">是的，测试完成后您可以下载PDF版本的详细报告。</p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">テスト結果は変わることがありますか？</h3>
+                    <p>エニアグラムの基本的な性格タイプは生涯を通じて比較的安定していると考えられていますが、ストレスや個人的成長によって表現方法が変化することがあります。定期的にテストを受けると、自己認識の変化を追跡できます。</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-primary mb-16">测试套餐</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
-                    <h3 class="text-2xl font-bold mb-4">基础版</h3>
-                    <p class="text-4xl font-bold mb-6">免费</p>
-                    <ul class="space-y-4 mb-8">
-                        <li>基础性格测试</li>
-                        <li>简要分析报告</li>
-                        <li>类型描述</li>
-                    </ul>
-                    <button class="w-full bg-primary text-white py-3 rounded-full hover:bg-primary/90 transition-colors">
-                        开始测试
-                    </button>
-                </div>
-                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow bg-primary text-white">
-                    <h3 class="text-2xl font-bold mb-4">专业版</h3>
-                    <p class="text-4xl font-bold mb-6">¥39</p>
-                    <ul class="space-y-4 mb-8">
-                        <li>详细性格分析</li>
-                        <li>完整PDF报告</li>
-                        <li>职业发展建议</li>
-                        <li>人际关系指导</li>
-                    </ul>
-                    <button class="w-full bg-white text-primary py-3 rounded-full hover:bg-gray-100 transition-colors">
-                        立即购买
-                    </button>
-                </div>
-                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
-                    <h3 class="text-2xl font-bold mb-4">企业版</h3>
-                    <p class="text-4xl font-bold mb-6">¥299</p>
-                    <ul class="space-y-4 mb-8">
-                        <li>团队批量测试</li>
-                        <li>团队协作分析</li>
-                        <li>个性化咨询</li>
-                        <li>定制化报告</li>
-                    </ul>
-                    <button class="w-full bg-primary text-white py-3 rounded-full hover:bg-primary/90 transition-colors">
-                        联系我们
-                    </button>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">テスト結果を友人と共有できますか？</h3>
+                    <p>もちろんです！テスト結果はソーシャルメディアで簡単に共有でき、友人や家族にもテストを勧めることができます。お互いのタイプを知ることで、より深い理解と効果的なコミュニケーションが促進されます。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div>
-                    <h4 class="text-xl font-bold mb-4">九型人格测试</h4>
-                    <p class="text-gray-400">探索真实的自我，发现更好的人生。</p>
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">エニアグラム性格テスト</h3>
+                    <p class="max-w-md opacity-75">
+                        自己発見の旅をサポートする、科学的に設計された無料のエニアグラム性格テストを提供しています。
+                    </p>
                 </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">快速链接</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">特色</a></li>
-                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">使用方法</a></li>
-                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">价格</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">联系我们</h4>
-                    <p class="text-gray-400">邮箱：limitedee@gmail.com</p>
-                </div>
-                <div>
-                    <h4 class="text-xl font-bold mb-4">关注我们</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6 9.806l-.507.507c-.183.183-.183.48 0 .664l3.248 3.248c.183.183.183.48 0 .664l-1.014 1.014c-.183.183-.48.183-.664 0l-3.248-3.248c-.183-.183-.48-.183-.664 0l-.507.507c-.183.183-.183.48 0 .664l3.248 3.248c.183.183.183.48 0 .664l-1.014 1.014c-.183.183-.48.183-.664 0l-3.248-3.248c-.183-.183-.48-.183-.664 0l-.507.507c-.183.183-.183.48 0 .664l4.482 4.482c.183.183.48.183.664 0l8.964-8.964c.183-.183.183-.48 0-.664l-4.482-4.482c-.183-.183-.48-.183-.664 0z"/></svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544A8.127 8.127 0 0 1 5.5 16.898a5.778 5.778 0 0 0 4.252-1.189 2.879 2.879 0 0 1-2.684-1.995 2.88 2.88 0 0 0 1.298-.049c-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359a2.877 2.877 0 0 1-.889-3.835 8.153 8.153 0 0 0 5.92 3.001 2.876 2.876 0 0 1 4.895-2.62 5.73 5.73 0 0 0 1.824-.697 2.884 2.884 0 0 1-1.263 1.589 5.73 5.73 0 0 0 1.649-.453 5.765 5.765 0 0 1-1.433 1.489z"/></svg>
-                        </a>
+                <div class="grid grid-cols-2 gap-8 md:grid-cols-3">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">リンク</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="#" class="hover:text-accent transition-all">ホーム</a></li>
+                            <li><a href="#about" class="hover:text-accent transition-all">テストについて</a></li>
+                            <li><a href="#features" class="hover:text-accent transition-all">特徴</a></li>
+                            <li><a href="#test" class="hover:text-accent transition-all">テストを始める</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">リソース</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="#faq" class="hover:text-accent transition-all">よくある質問</a></li>
+                            <li><a href="#" class="hover:text-accent transition-all">プライバシーポリシー</a></li>
+                            <li><a href="#" class="hover:text-accent transition-all">利用規約</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">お問い合わせ</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="mailto:contact@aihinto.com" class="hover:text-accent transition-all">contact@aihinto.com</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-400">© 2024 Michael. 保留所有权利。</p>
+            <div class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="opacity-75 mb-4 md:mb-0">© 2023 michael. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="questions.js"></script>
-    <script src="app.js"></script>
+    <!-- JavaScript -->
     <script>
-        // 确保全局函数存在
-        if (typeof handleAnswer !== 'function') {
-            window.handleAnswer = function(answer) {
-                console.log("全局处理答案函数被调用:", answer);
-                if (window.handleAnswer) {
-                    window.handleAnswer(answer);
-                } else {
-                    console.error("错误: 未找到handleAnswer函数，请刷新页面重试");
-                    alert("出现错误，请刷新页面重试");
-                }
-            }
-        }
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
     </script>
 </body>
 </html> 

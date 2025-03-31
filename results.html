@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="エニアグラム性格テスト - あなたの性格タイプの詳細分析">
+    <title>エニアグラム性格テスト | 結果</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#3B82F6',
+                        accent: '#DBEAFE',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .transition-all {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-primary">エニアグラム</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-all">テストについて</a>
+                <a href="index.html#features" class="font-medium hover:text-primary transition-all">特徴</a>
+                <a href="index.html#faq" class="font-medium hover:text-primary transition-all">よくある質問</a>
+            </nav>
+            <button id="menu-toggle" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="index.html#about" class="block font-medium hover:text-primary">テストについて</a>
+                <a href="index.html#features" class="block font-medium hover:text-primary">特徴</a>
+                <a href="index.html#faq" class="block font-medium hover:text-primary">よくある質問</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Results Section -->
+    <section class="pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold text-center mb-8" id="type-title">エニアグラムタイプ分析</h1>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <!-- Primary Type Section -->
+                    <div class="bg-accent p-6 rounded-lg mb-8">
+                        <h2 class="text-2xl font-bold mb-4 text-primary" id="primary-type-name"></h2>
+                        <p class="text-lg mb-6" id="primary-type-description"></p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                            <div class="bg-white/50 p-5 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-3">代表的な人物</h3>
+                                <p id="famous-people" class="text-gray-700"></p>
+                            </div>
+                            <div class="bg-white/50 p-5 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-3">気質と特徴</h3>
+                                <p id="temperament" class="text-gray-700"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white/50 p-5 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-3">恋愛の特徴</h3>
+                                <p id="love-trait" class="text-gray-700"></p>
+                            </div>
+                            <div class="bg-white/50 p-5 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-3">適した職業</h3>
+                                <p id="suitable-jobs" class="text-gray-700"></p>
+                            </div>
+                            <div class="bg-white/50 p-5 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-3">口癖</h3>
+                                <p id="catchphrase" class="text-gray-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secondary Type Section -->
+                    <div class="bg-gray-100 p-6 rounded-lg mb-8">
+                        <h3 class="text-xl font-semibold mb-3" id="secondary-type-name">サブタイプ</h3>
+                        <p id="secondary-type-description" class="text-gray-700"></p>
+                    </div>
+                    
+                    <!-- Type Comparison Chart -->
+                    <div class="mb-10">
+                        <h3 class="text-xl font-semibold mb-4">あなたのタイプ分布</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="type-chart">
+                            <!-- Type chart bars will be inserted here via JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
+                        <a href="index.html" class="bg-gray-200 hover:bg-gray-300 text-dark font-medium py-3 px-6 rounded-lg shadow-md transition-all text-center">
+                            ホームに戻る
+                        </a>
+                        <a href="test.html" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all text-center">
+                            テストをやり直す
+                        </a>
+                        <button id="share-results" class="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-lg shadow-md transition-all">
+                            結果をシェアする
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Types Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-12">他のエニアグラムタイプを見る</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <a href="#" class="type-link" data-type="type1">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ1 - 完璧主義者</h3>
+                        <p class="text-gray-600">正しさ、秩序、完璧さを追求し、強い内部批判基準を持っています。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type2">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ2 - 助言者</h3>
+                        <p class="text-gray-600">人助けを好み、関係を重視し、必要とされ、感謝されることを望みます。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type3">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ3 - 達成者</h3>
+                        <p class="text-gray-600">成功と効率を追求し、適応力があり、イメージと達成に関心があります。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type4">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ4 - 個性派</h3>
+                        <p class="text-gray-600">真実性とユニークさを重視し、感情豊かで、しばしば他と違うと感じます。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type5">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ5 - 思想家</h3>
+                        <p class="text-gray-600">知識と理解を追求し、独立性を持ち、参加するよりも観察することを好みます。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type6">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ6 - 忠実者</h3>
+                        <p class="text-gray-600">安全と準備を重視し、忠実で、危険に対して警戒心があります。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type7">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ7 - 活動家</h3>
+                        <p class="text-gray-600">楽しさと新しい経験を追求し、楽観的で、制限や否定的感情を嫌います。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ8 - 挑戦者</h3>
+                        <p class="text-gray-600">コントロールと力を求め、直接的で、自分と大切な人を守ります。</p>
+                    </div>
+                </a>
+                <a href="#" class="type-link" data-type="type9">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                        <h3 class="text-xl font-semibold mb-2">タイプ9 - 平和主義者</h3>
+                        <p class="text-gray-600">内外の平和を追求し、穏やかで、環境に溶け込み、対立を調停する傾向があります。</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">エニアグラム性格テスト</h3>
+                    <p class="max-w-md opacity-75">
+                        自己発見の旅をサポートする、科学的に設計された無料のエニアグラム性格テストを提供しています。
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 md:grid-cols-3">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">リンク</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="index.html" class="hover:text-accent transition-all">ホーム</a></li>
+                            <li><a href="index.html#about" class="hover:text-accent transition-all">テストについて</a></li>
+                            <li><a href="index.html#features" class="hover:text-accent transition-all">特徴</a></li>
+                            <li><a href="test.html" class="hover:text-accent transition-all">テストを始める</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">リソース</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="index.html#faq" class="hover:text-accent transition-all">よくある質問</a></li>
+                            <li><a href="#" class="hover:text-accent transition-all">プライバシーポリシー</a></li>
+                            <li><a href="#" class="hover:text-accent transition-all">利用規約</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">お問い合わせ</h4>
+                        <ul class="space-y-2 opacity-75">
+                            <li><a href="mailto:contact@aihinto.com" class="hover:text-accent transition-all">contact@aihinto.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="opacity-75 mb-4 md:mb-0">© 2023 michael. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="opacity-75 hover:opacity-100 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="results.js"></script>
+</body>
+</html> 
