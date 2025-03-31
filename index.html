@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九型人格测试 - 探索真实的自我</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E293B',
+                        secondary: '#64748B',
+                        accent: '#3B82F6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-primary">九型人格测试</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-primary transition-colors">特色</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-primary transition-colors">使用方法</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-primary transition-colors">用户评价</a>
+                    <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">常见问题</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-primary transition-colors">价格</a>
+                </div>
+                <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
+                    开始测试
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-primary mb-6">
+                探索你的真实性格类型
+            </h1>
+            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                通过科学的九型人格测试，深入了解自己的性格特征，发现更好的自己。
+            </p>
+            <button class="bg-primary text-white text-lg px-8 py-4 rounded-full hover:bg-primary/90 transition-colors shadow-lg">
+                立即开始测试
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">为什么选择我们的测试</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">科学准确</h3>
+                    <p class="text-gray-600">基于专业心理学研究，提供准确的性格分析</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">快速简便</h3>
+                    <p class="text-gray-600">只需10分钟，即可完成全部测试</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">深入分析</h3>
+                    <p class="text-gray-600">提供全方位的性格特征解读</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">测试流程</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-2xl font-bold text-primary">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">开始测试</h3>
+                    <p class="text-gray-600">点击开始按钮，进入测试页面</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-2xl font-bold text-primary">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">回答问题</h3>
+                    <p class="text-gray-600">完成36道精心设计的问题</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-2xl font-bold text-primary">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">生成报告</h3>
+                    <p class="text-gray-600">系统分析您的答案</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                        <span class="text-2xl font-bold text-primary">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">查看结果</h3>
+                    <p class="text-gray-600">获取详细的性格分析报告</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">用户评价</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <p class="text-gray-600 mb-6">"这个测试帮助我更好地了解了自己，对我的职业规划有很大帮助。"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">张小明</h4>
+                            <p class="text-gray-500">产品经理</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <p class="text-gray-600 mb-6">"测试结果非常准确，让我对自己的性格特点有了新的认识。"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">李华</h4>
+                            <p class="text-gray-500">教师</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <p class="text-gray-600 mb-6">"通过这个测试，我更好地理解了自己和他人的差异。"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">王芳</h4>
+                            <p class="text-gray-500">心理咨询师</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">常见问题</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg mb-2">测试需要多长时间？</h3>
+                    <p class="text-gray-600">一般来说，完成全部36道题目大约需要10-15分钟。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg mb-2">测试结果准确吗？</h3>
+                    <p class="text-gray-600">我们的测试基于科学的心理学研究，具有较高的准确性。但请记住，这仅作为自我认知的参考。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg mb-2">可以保存测试结果吗？</h3>
+                    <p class="text-gray-600">是的，测试完成后您可以下载PDF版本的详细报告。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">测试套餐</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
+                    <h3 class="text-2xl font-bold mb-4">基础版</h3>
+                    <p class="text-4xl font-bold mb-6">免费</p>
+                    <ul class="space-y-4 mb-8">
+                        <li>基础性格测试</li>
+                        <li>简要分析报告</li>
+                        <li>类型描述</li>
+                    </ul>
+                    <button class="w-full bg-primary text-white py-3 rounded-full hover:bg-primary/90 transition-colors">
+                        开始测试
+                    </button>
+                </div>
+                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow bg-primary text-white">
+                    <h3 class="text-2xl font-bold mb-4">专业版</h3>
+                    <p class="text-4xl font-bold mb-6">¥39</p>
+                    <ul class="space-y-4 mb-8">
+                        <li>详细性格分析</li>
+                        <li>完整PDF报告</li>
+                        <li>职业发展建议</li>
+                        <li>人际关系指导</li>
+                    </ul>
+                    <button class="w-full bg-white text-primary py-3 rounded-full hover:bg-gray-100 transition-colors">
+                        立即购买
+                    </button>
+                </div>
+                <div class="border rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
+                    <h3 class="text-2xl font-bold mb-4">企业版</h3>
+                    <p class="text-4xl font-bold mb-6">¥299</p>
+                    <ul class="space-y-4 mb-8">
+                        <li>团队批量测试</li>
+                        <li>团队协作分析</li>
+                        <li>个性化咨询</li>
+                        <li>定制化报告</li>
+                    </ul>
+                    <button class="w-full bg-primary text-white py-3 rounded-full hover:bg-primary/90 transition-colors">
+                        联系我们
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h4 class="text-xl font-bold mb-4">九型人格测试</h4>
+                    <p class="text-gray-400">探索真实的自我，发现更好的人生。</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">特色</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition-colors">使用方法</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">价格</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">联系我们</h4>
+                    <p class="text-gray-400">邮箱：limitedee@gmail.com</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6 9.806l-.507.507c-.183.183-.183.48 0 .664l3.248 3.248c.183.183.183.48 0 .664l-1.014 1.014c-.183.183-.48.183-.664 0l-3.248-3.248c-.183-.183-.48-.183-.664 0l-.507.507c-.183.183-.183.48 0 .664l3.248 3.248c.183.183.183.48 0 .664l-1.014 1.014c-.183.183-.48.183-.664 0l-3.248-3.248c-.183-.183-.48-.183-.664 0l-.507.507c-.183.183-.183.48 0 .664l4.482 4.482c.183.183.48.183.664 0l8.964-8.964c.183-.183.183-.48 0-.664l-4.482-4.482c-.183-.183-.48-.183-.664 0z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544A8.127 8.127 0 0 1 5.5 16.898a5.778 5.778 0 0 0 4.252-1.189 2.879 2.879 0 0 1-2.684-1.995 2.88 2.88 0 0 0 1.298-.049c-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359a2.877 2.877 0 0 1-.889-3.835 8.153 8.153 0 0 0 5.92 3.001 2.876 2.876 0 0 1 4.895-2.62 5.73 5.73 0 0 0 1.824-.697 2.884 2.884 0 0 1-1.263 1.589 5.73 5.73 0 0 0 1.649-.453 5.765 5.765 0 0 1-1.433 1.489z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Michael. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
